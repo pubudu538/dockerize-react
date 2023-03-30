@@ -16,15 +16,15 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # Add your nginx.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN chown -R nginx:nginx /usr/share/nginx && chmod -R 755 /usr/share/nginx && \
-        chown -R nginx:nginx /var/cache/nginx && \
-        chown -R nginx:nginx /var/log/nginx && \
-        chown -R nginx:nginx /etc/nginx/conf.d
+RUN chown -R 10005:10005 /usr/share/nginx && chmod -R 755 /usr/share/nginx && \
+        chown -R 10005:10005 /var/cache/nginx && \
+        chown -R 10005:10005 /var/log/nginx && \
+        chown -R 10005:10005 /etc/nginx/conf.d
 
 RUN touch /var/run/nginx.pid && \
-        chown -R nginx:nginx /var/run/nginx.pid
+        chown -R 10005:10005 /var/run/nginx.pid
 
-USER nginx
+USER 10005
 
 # Expose port
 EXPOSE 8080
