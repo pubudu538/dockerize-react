@@ -30,7 +30,7 @@ RUN touch /var/run/nginx.pid && \
 USER 10005
 
 # Expose port
-EXPOSE 80
+EXPOSE 8080
 # Start nginx
 
 
